@@ -1,5 +1,6 @@
 from django.db import models
 from uuid import uuid4
+from django.contrib.auth.models import User
 
 
 class Job (models.Model):
@@ -7,3 +8,7 @@ class Job (models.Model):
     title = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+
+
+class PersonalJob(Job):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
