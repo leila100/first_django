@@ -10,6 +10,7 @@ pep8 = "*"
 django = "*"
 python-decouple = "*"
 graphene-django = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"

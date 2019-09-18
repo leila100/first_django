@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'graphene_django',
     'jobs',
     'django.contrib.admin',
@@ -124,4 +125,10 @@ STATIC_URL = '/static/'
 
 GRAPHENE = {
     'SCHEMA': 'jobs.schema.schema'  # dir.file.varname
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
 }
