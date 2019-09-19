@@ -7,7 +7,7 @@ class PersonalJobSerializer(serializers.HyperlinkedModelSerializer):
     # Inner class nested inside PersonalNoteSerializer
     class Meta:
         model = PersonalJob
-        fields = ('title', 'company', 'description')
+        fields = ('id', 'title', 'company', 'description')
 
 
 class PersonalJobViewSet(viewsets.ModelViewSet):
@@ -15,8 +15,8 @@ class PersonalJobViewSet(viewsets.ModelViewSet):
     queryset = PersonalJob.objects.none()
 
     def create(self, validated_data):
-        user = self.context['request'].user
-        job = PersonalJob.objects.create(user=user, **validated_data)
+        user = self.request.user
+        job = PersonalJob.objects.create(user=user, **validated_data.data)
         return job
 
     def get_queryset(self):
